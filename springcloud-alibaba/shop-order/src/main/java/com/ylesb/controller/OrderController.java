@@ -1,4 +1,4 @@
-package ylesb.controller;
+package com.ylesb.controller;
 /**
  * @title: UserController
  * @projectName springcloud-alibaba
@@ -10,16 +10,14 @@ package ylesb.controller;
 
 import com.ylesb.domain.Order;
 import com.ylesb.domain.Product;
+import com.ylesb.service.OrderService;
+import com.ylesb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import ylesb.service.OrderService;
-
-import java.util.List;
 
 /**
  * @className    : UserController
@@ -41,12 +39,15 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private DiscoveryClient discoveryClient;
+    @Autowired
+    private ProductService productService;
     @RequestMapping("/order/prod/{pid}")
     public Order oder(@PathVariable("pid") Integer pid){
-        List<ServiceInstance> instances=discoveryClient.getInstances("service-product");
-        ServiceInstance serviceInstance = instances.get(0);
-
-        Product product = restTemplate.getForObject("http://"+serviceInstance.getHost()+":"+serviceInstance.getPort()+"/product/"+pid,Product.class);
+        //List<ServiceInstance> instances=discoveryClient.getInstances("service-product");
+        //ServiceInstance serviceInstance = instances.get(0);
+        //
+        //Product product = restTemplate.getForObject("http://service-product/product/"+pid,Product.class);
+        Product product = productService.findByPid(pid);
         Order order = new Order();
         order.setUid(1);
         orderService.createOrder(order);

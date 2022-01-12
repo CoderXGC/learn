@@ -1,27 +1,28 @@
-package ylesb.service;
+package com.ylesb.dao;
 /**
- * @title: UserService
+ * @title: UserDao
  * @projectName springcloud-alibaba
  * @description: TODO
  * @author White
  * @site : [www.ylesb.com]
- * @date 2022/1/1115:38
+ * @date 2022/1/1115:40
  */
 
 import com.ylesb.domain.Order;
+import com.ylesb.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * @className    : UserService
+ * @className    : UserDao
  * @description  : [描述说明该类的功能]  
  * @author       : [XuGuangchao]
  * @site         : [www.ylesb.com]
  * @version      : [v1.0]
- * @createTime   : [2022/1/11 15:38]
+ * @createTime   : [2022/1/11 15:40]
  * @updateUser   : [XuGuangchao]
- * @updateTime   : [2022/1/11 15:38]
+ * @updateTime   : [2022/1/11 15:40]
  * @updateRemark : [描述说明本次修改内容] 
  */
-public interface OrderService {
-    void createOrder(Order order);
+public interface OrderDao extends JpaRepository<Order, Integer> {
 }
 

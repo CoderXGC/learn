@@ -1,38 +1,32 @@
-package ylesb;
+package com.ylesb;
 /**
- * @title: UserApplication
+ * @title: ApiApplication
  * @projectName springcloud-alibaba
  * @description: TODO
  * @author White
  * @site : [www.ylesb.com]
- * @date 2022/1/1115:28
+ * @date 2022/1/1217:00
  */
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 /**
- * @className    : UserApplication
+ * @className    : ApiApplication
  * @description  : [描述说明该类的功能]  
  * @author       : [XuGuangchao]
  * @site         : [www.ylesb.com]
  * @version      : [v1.0]
- * @createTime   : [2022/1/11 15:28]
+ * @createTime   : [2022/1/12 17:00]
  * @updateUser   : [XuGuangchao]
- * @updateTime   : [2022/1/11 15:28]
+ * @updateTime   : [2022/1/12 17:00]
  * @updateRemark : [描述说明本次修改内容] 
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class OrderApplication {
+public class ApiGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class);
-    }
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
+        SpringApplication.run(ApiGatewayApplication.class);
     }
 }

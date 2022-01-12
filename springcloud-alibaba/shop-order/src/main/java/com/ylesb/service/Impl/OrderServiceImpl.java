@@ -1,4 +1,4 @@
-package ylesb.service.Impl;
+package com.ylesb.service.Impl;
 /**
  * @title: UserServiceImpl
  * @projectName springcloud-alibaba
@@ -11,8 +11,8 @@ package ylesb.service.Impl;
 import com.ylesb.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ylesb.dao.OrderDao;
-import ylesb.service.OrderService;
+import com.ylesb.dao.OrderDao;
+import com.ylesb.service.OrderService;
 
 /**
  * @className    : UserServiceImpl
