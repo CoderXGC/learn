@@ -12,6 +12,7 @@ import com.ylesb.domain.Order;
 import com.ylesb.domain.Product;
 import com.ylesb.service.OrderService;
 import com.ylesb.service.ProductService;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +42,8 @@ public class OrderController {
     private DiscoveryClient discoveryClient;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
     @RequestMapping("/order/prod/{pid}")
     public Order oder(@PathVariable("pid") Integer pid){
         //List<ServiceInstance> instances=discoveryClient.getInstances("service-product");
@@ -51,6 +54,11 @@ public class OrderController {
         Order order = new Order();
         order.setUid(1);
         orderService.createOrder(order);
+        //参数1指定topic
+        //指定消息体
+        rocketMQTemplate.convertAndSend("order-topic",order);
+
+
         return order;
     }
 }

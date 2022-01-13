@@ -9,7 +9,9 @@ package com.ylesb.service.Impl;
  */
 
 import com.ylesb.domain.Order;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import com.ylesb.dao.OrderDao;
 import com.ylesb.service.OrderService;
@@ -29,8 +31,11 @@ import com.ylesb.service.OrderService;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderDao orderDao;
+
     @Override
     public void createOrder(Order order) {
         orderDao.save(order);
     }
+
+
 }

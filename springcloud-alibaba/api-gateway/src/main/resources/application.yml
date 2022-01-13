@@ -3,6 +3,12 @@ server:
 spring:
   application:
     name: api-gateway
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    discovery-client-enabled: false #让nacos把它当成一个url不要做服务名
+  sleuth:
+    sampler:
+      probability: 0.1 #采样的百分比
   cloud:
     nacos:
       discovery:
@@ -16,7 +22,8 @@ spring:
          # uri: http://localhost:8081 #要转发的地址
           uri: lb:service-prooduct #lb负载均衡 后面是具体微服务的标识
           order: 1 #路由越小优先级越高
-          predicates:  #断言（条件判断，返回值是bool，满足条件的）
+          predicates:  #断言（条件判断，返回值是bool，满足条件的）可以自定义路由配置详情看AGEROUTER
             - Path=/product-serv/**  #当请求的规则满足
-          filters: #过滤器
+          filters: #过滤器 自定义过滤器Log
             - StripPrefix=1 #在请求转发路径去掉一层
+            - Log=ture,false

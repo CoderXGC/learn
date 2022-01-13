@@ -27,7 +27,7 @@ import javax.persistence.Id;
  * @updateRemark : [描述说明本次修改内容] 
  */
 @Data
-@Entity(name = "shop_oorder")
+@Entity(name = "shop_order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
