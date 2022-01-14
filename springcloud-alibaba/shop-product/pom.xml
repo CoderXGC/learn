@@ -28,6 +28,16 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+        <!--配置中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <!--seata分布事务依赖-->
+        <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+        </dependency>
     </dependencies>
 
 

@@ -9,6 +9,7 @@ package com.ylesb.service.Impl;
  */
 
 import com.ylesb.domain.Order;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
@@ -33,6 +34,7 @@ public class OrderServiceImpl implements OrderService {
     OrderDao orderDao;
 
     @Override
+    @GlobalTransactional//开启全局事务seata无代码侵入性
     public void createOrder(Order order) {
         orderDao.save(order);
     }
